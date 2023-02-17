@@ -36,7 +36,7 @@ namespace GameOfLife
         {
             var lines = SplitLines(rle);
             var size = GetSizeFromHeader(lines);
-            var cells = RleString.LinesToCells(lines, size);
+            var cells = RleString.LinesToRows(lines, size).SelectMany(row => RleTag.RowToCells(row, size.Width));
             return new Grid(size.Width, size.Height, cells.ToArray());
         }
     }
