@@ -1,24 +1,20 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Security.Principal;
+using System.Text.RegularExpressions;
 
 namespace GameOfLife
 {
-    public class RleTag
+    public static class RleTag
     {
         public static readonly Regex Pattern = new(@"\d*[bo]");
         private static readonly char[] bAndO = { 'b', 'o' };
 
-        public int Count;
-        public char Cell;
+        public static bool GetCell(Match match) => match.Value.Last() == 'o';
 
-        public static RleTag FromMatch(Match match) => new()
-        {
-            Count = match.Value.Length > 1 ? Convert.ToInt32(match.Value.TrimEnd(bAndO)) : 1,
-            Cell = match.Value.Last()
-        };
+        public static int GetCount(Match match) => match.Value.Length > 1 ? Convert.ToInt32(match.Value.TrimEnd(bAndO)) : 1;
 
-        public IEnumerable<bool> ToCells()
+        public static IEnumerable<bool> ConvertMatchToCells(Match match)
         {
-            return Enumerable.Repeat<bool>(Cell == 'o', Count);
+            return Enumerable.Repeat<bool>(GetCell(match), GetCount(match));
         }
     }
 }
