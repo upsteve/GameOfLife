@@ -29,15 +29,13 @@ namespace GameOfLife
             return new RleString(terminator != -1 ? value[..terminator] : value);
         }
 
-        private static IEnumerable<bool> RowsToCells(string row, int count) => RleTag.Pattern.Matches(row).SelectMany(RleTag.ConvertMatchToCells).Pad(count, false);
-
         public static IEnumerable<bool> LinesToCells(IEnumerable<string> lines, Size size)
         {
             return FromDataLines(lines)
                 .TruncateAtTerminator()
                 .RemoveWhitespace()
                 .ToRows(size.Height)
-                .SelectMany(row => RowsToCells(row, size.Width));
+                .SelectMany(row => RleTag.RowsToCells(row, size.Width));
         }
     }
 }
