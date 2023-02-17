@@ -2,9 +2,9 @@
 {
     public class TxtParser : IGridParser
     {
-        private string[] SplitLines(string plainText) => plainText.ToUpper().Trim().Split(Environment.NewLine);
+        private static ICollection<string> SplitLines(string plainText) => plainText.ToUpper().Trim().Split(Environment.NewLine);
 
-        private static void PopulateGridFromLines(ref Grid grid, string[] lines)
+        private static void PopulateGridFromLines(ref Grid grid, ICollection<string> lines)
         {
             var i = 0;
             foreach (var line in lines)
@@ -18,8 +18,8 @@
 
         public Grid FromString(string plainText)
         {
-            var lines = SplitLines(plainText);
-            var grid = new Grid(lines[0].Length, lines.Length);
+            var lines = SplitLines(plainText);            
+            var grid = new Grid(lines.First().Length, lines.Count);
             PopulateGridFromLines(ref grid, lines);
             return grid;
         }

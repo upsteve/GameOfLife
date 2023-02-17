@@ -17,7 +17,7 @@ namespace GameOfLife
 
         private static bool IsDataLine(string line) => !line.Contains('#') && !line.Contains('x');
 
-        private static RleString FromDataLines(string[] lines) => new(string.Join("", lines.Where(IsDataLine)));
+        private static RleString FromDataLines(IEnumerable<string> lines) => new(string.Join("", lines.Where(IsDataLine)));
 
         private RleString RemoveWhitespace() => new(whitespace.Replace(value, ""));
 
@@ -31,14 +31,13 @@ namespace GameOfLife
 
         private static IEnumerable<bool> RowsToCells(string row, int count) => RleTag.Pattern.Matches(row).SelectMany(RleTag.ConvertMatchToCells).Pad(count, false);
 
-        public static bool[] LinesToCellArray(string[] lines, Size size)
+        public static IEnumerable<bool> LinesToCells(IEnumerable<string> lines, Size size)
         {
             return FromDataLines(lines)
                 .TruncateAtTerminator()
                 .RemoveWhitespace()
                 .ToRows(size.Height)
-                .SelectMany(row => RowsToCells(row, size.Width))
-                .ToArray();
+                .SelectMany(row => RowsToCells(row, size.Width));
         }
     }
 }

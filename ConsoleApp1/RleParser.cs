@@ -7,7 +7,7 @@ namespace GameOfLife
     {
         private static readonly Regex header = new(@"^\s*x\s*=\s*(\d+),\s*y\s*=\s*(\d+)");
 
-        private static Match FindHeader(string[] lines)
+        private static Match FindHeader(IEnumerable<string> lines)
         {
             foreach (var line in lines)
             {
@@ -24,20 +24,20 @@ namespace GameOfLife
                 Convert.ToInt32(header.Groups[2].Value));
         }
 
-        private static Size GetSizeFromHeader(string[] lines)
+        private static Size GetSizeFromHeader(IEnumerable<string> lines)
         {
             var header = FindHeader(lines);
             return ToSize(header);
         }
 
-        private static string[] SplitLines(string rle) => rle.ToLower().Split(Environment.NewLine);
+        private static IEnumerable<string> SplitLines(string rle) => rle.ToLower().Split(Environment.NewLine);
 
         public Grid FromString(string rle)
         {
             var lines = SplitLines(rle);
             var size = GetSizeFromHeader(lines);
-            var cells = RleString.LinesToCellArray(lines, size);
-            return new Grid(size.Width, size.Height, cells);
+            var cells = RleString.LinesToCells(lines, size);
+            return new Grid(size.Width, size.Height, cells.ToArray());
         }
     }
 }

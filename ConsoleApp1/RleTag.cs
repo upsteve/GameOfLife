@@ -7,9 +7,9 @@ namespace GameOfLife
         public static readonly Regex Pattern = new(@"\d*[bo]");
         private static readonly char[] bAndO = { 'b', 'o' };
 
-        public static bool GetCell(Match match) => match.Value.Last() == 'o';
+        private static bool GetCell(Match match) => match.Value.Last() == 'o';
 
-        public static int GetCount(Match match) => match.Value.Length > 1 ? Convert.ToInt32(match.Value.TrimEnd(bAndO)) : 1;
+        private static int GetCount(Match match) => match.Value.Length > 1 ? Convert.ToInt32(match.Value.TrimEnd(bAndO)) : 1;
 
         public static IEnumerable<bool> ConvertMatchToCells(Match match)
         {

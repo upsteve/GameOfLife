@@ -6,7 +6,7 @@ namespace LogicTests
         [TestMethod]
         public void Size_be_loaded_from_an_RLE_header()
         {
-            var rle = "x = 3, y = 5";
+            const string rle = "x = 3, y = 5";
 
             var grid = GridBuilder.FromRleString(rle);
 
@@ -17,7 +17,7 @@ namespace LogicTests
         [TestMethod]
         public void Size_be_loaded_from_an_RLE_header_ignoring_spaces()
         {
-            var rle = @" x= 3,y =5 ";
+            const string rle = @" x= 3,y =5 ";
 
             var grid = GridBuilder.FromRleString(rle);
 
@@ -29,7 +29,7 @@ namespace LogicTests
         [TestMethod]
         public void Single_cells_of_b_and_o_should_be_dead_and_live()
         {
-            var rle = @"x = 1,y = 3
+            const string rle = @"x = 1,y = 3
 b$o$b!";
 
             var grid = GridBuilder.FromRleString(rle);
@@ -42,7 +42,7 @@ b$o$b!";
         [TestMethod]
         public void Multiple_cells_of_b_and_o_should_be_dead_and_live()
         {
-            var rle = @"x = 3, y = 3
+            const string rle = @"x = 3, y = 3
 bob$obo$boo!";
 
             var grid = GridBuilder.FromRleString(rle);
@@ -61,7 +61,7 @@ bob$obo$boo!";
         [TestMethod]
         public void Incomplete_rows_should_be_completed_with_dead_cells()
         {
-            var rle = @"x = 3, y = 3
+            const string rle = @"x = 3, y = 3
 $o$bo!";
 
             var grid = GridBuilder.FromRleString(rle);
@@ -80,7 +80,7 @@ $o$bo!";
         [TestMethod]
         public void Number_prefixes_should_create_strings_of_cells()
         {
-            var rle = @"x = 3, y = 3
+            const string rle = @"x = 3, y = 3
 1o$2o$3o!";
 
             var grid = GridBuilder.FromRleString(rle);
