@@ -9,6 +9,16 @@ namespace GameOfLife
     {
         private static readonly Regex whitespace = new(@"\s+");
         private readonly string value;
+        private static readonly Regex tag = new(@"\d*[bo]");
+        private static readonly char[] bAndO = { 'b', 'o' };
+
+        private static bool GetCell(Match match) => match.Value.Last() == 'o';
+
+        private static int GetCount(Match match) => match.Value.Length > 1 ? Convert.ToInt32(match.Value.TrimEnd(bAndO)) : 1;
+
+        private static IEnumerable<bool> ConvertMatchToCells(Match match) => Enumerable.Repeat<bool>(GetCell(match), GetCount(match));
+
+        private static IEnumerable<bool> RowsToCells(string row, int count) => tag.Matches(row).SelectMany(ConvertMatchToCells).Pad(count, false);
 
         private RleString(string dataLine)
         {
@@ -35,7 +45,7 @@ namespace GameOfLife
                 .TruncateAtTerminator()
                 .RemoveWhitespace()
                 .ToRows(size.Height)
-                .SelectMany(row => RleTag.RowsToCells(row, size.Width));
+                .SelectMany(row => RowsToCells(row, size.Width));
         }
     }
 }
