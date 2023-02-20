@@ -5,18 +5,6 @@ namespace GameOfLife
 {
     public class RleParser : IGridParser
     {
-        private static readonly Regex header = new(@"^\s*x\s*=\s*(\d+),\s*y\s*=\s*(\d+)");
-
-        private static Match FindHeader(IEnumerable<string> lines)
-        {
-            foreach (var line in lines)
-            {
-                var match = header.Match(line);
-                if (match.Success) return match;
-            }
-            throw new ArgumentOutOfRangeException("filename", "File does not contain a valid header of the format x = 3, y = 3");
-        }
-
         private static Size ToSize(Match header)
         {
             return new Size(
@@ -26,7 +14,7 @@ namespace GameOfLife
 
         private static Size GetSizeFromHeader(IEnumerable<string> lines)
         {
-            var header = FindHeader(lines);
+            var header = RleHeader.FindHeader(lines);
             return ToSize(header);
         }
 
@@ -36,7 +24,7 @@ namespace GameOfLife
         {
             var lines = SplitLines(rle);
             var size = GetSizeFromHeader(lines);
-            var cells = RleString.LinesToRows(lines, size).SelectMany(row => RleTag.RowToCells(row, size.Width));
+            var cells = RleString.LinesToCells(lines, size);
             return new Grid(size.Width, size.Height, cells.ToArray());
         }
     }

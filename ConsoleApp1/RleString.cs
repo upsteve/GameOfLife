@@ -1,25 +1,26 @@
 ﻿using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace GameOfLife
 {
     public class RleString
     {
-        private static readonly Regex whitespace = new(@"\s+");
         private readonly string value;
 
-        private RleString(string dataLine)
+        private RleString(string value)
         {
-            value = dataLine;
+            this.value = value;
         }
 
-        private static bool IsDataLine(string line) => !line.Contains('#') && !line.Contains('x');
+        public RleString(IEnumerable<string> lines)
+        {
+            value = string.Join("", lines.Where(IsDataLine));
+        }
 
-        private static RleString FromDataLines(IEnumerable<string> lines) => new(string.Join("", lines.Where(IsDataLine)));
+        private bool IsDataLine(string line) => !line.Contains('#') && !line.Contains('x');
 
-        private RleString RemoveWhitespace() => new(whitespace.Replace(value, ""));
+        private RleString RemoveWhitespace() => new (Regex.Replace(value, @"\s+", ""));
 
         private IEnumerable<string> ToRows(int count) => value.Split('$').Pad(count, "");
 
@@ -29,13 +30,13 @@ namespace GameOfLife
             return new RleString(terminator != -1 ? value[..terminator] : value);
         }
 
-        public static IEnumerable<string> LinesToRows(IEnumerable<string> lines, Size size)
+        public static IEnumerable<bool> LinesToCells(IEnumerable<string> lines, Size size)
         {
-            return FromDataLines(lines)
+            return new RleString(lines)
                 .TruncateAtTerminator()
                 .RemoveWhitespace()
-                .ToRows(size.Height);
-                //.SelectMany(row => RleTag.RowsToCells(row, size.Width));
+                .ToRows(size.Height)
+                .SelectMany(row => RleConverter.RowToCells(row, size.Width));
         }
     }
 }
