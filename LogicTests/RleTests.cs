@@ -95,5 +95,5 @@ $o$bo!";
             grid[7].Should().Be(true);
             grid[8].Should().Be(true);
         }
-   }
+    }
 }

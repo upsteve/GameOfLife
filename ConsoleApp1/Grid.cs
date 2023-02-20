@@ -31,7 +31,7 @@ namespace GameOfLife
         }
 
         public object Clone() => new Grid(Size.Width, Size.Height, (bool[])cells.Clone());
-        private int CountOfNeighours(Point point) => gridEnumerator.Neighbours(point).Count(neighbour => this[neighbour]);
+        private int CountOfNeighours(Point point) => gridEnumerator.NeighboursOf(point).Count(neighbour => this[neighbour]);
 
         private void UpdateCell(Point point, int neighbours)
         {

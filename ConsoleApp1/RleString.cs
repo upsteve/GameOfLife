@@ -18,9 +18,9 @@ namespace GameOfLife
             value = string.Join("", lines.Where(IsDataLine));
         }
 
-        private bool IsDataLine(string line) => !line.Contains('#') && !line.Contains('x');
+        private static bool IsDataLine(string line) => !line.Contains('#') && !line.Contains('x');
 
-        private RleString RemoveWhitespace() => new (Regex.Replace(value, @"\s+", ""));
+        private RleString RemoveWhitespace() => new(Regex.Replace(value, @"\s+", ""));
 
         private IEnumerable<string> ToRows(int count) => value.Split('$').Pad(count, "");
 

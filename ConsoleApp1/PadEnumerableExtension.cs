@@ -6,7 +6,6 @@
         {
             var enumerator = source.GetEnumerator();
             while (count-- > 0) yield return enumerator.MoveNext() ? enumerator.Current : value;
-            yield break;
         }
     }
 }

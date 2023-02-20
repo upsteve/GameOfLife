@@ -16,9 +16,9 @@
             }
         }
 
-        public Grid FromString(string plainText)
+        public Grid FromString(string value)
         {
-            var lines = SplitLines(plainText);            
+            var lines = SplitLines(value);
             var grid = new Grid(lines.First().Length, lines.Count);
             PopulateGridFromLines(ref grid, lines);
             return grid;

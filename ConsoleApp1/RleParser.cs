@@ -20,9 +20,9 @@ namespace GameOfLife
 
         private static IEnumerable<string> SplitLines(string rle) => rle.ToLower().Split(Environment.NewLine);
 
-        public Grid FromString(string rle)
+        public Grid FromString(string value)
         {
-            var lines = SplitLines(rle);
+            var lines = SplitLines(value);
             var size = GetSizeFromHeader(lines);
             var cells = RleString.LinesToCells(lines, size);
             return new Grid(size.Width, size.Height, cells.ToArray());

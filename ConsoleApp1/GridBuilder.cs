@@ -1,6 +1,6 @@
 ﻿namespace GameOfLife
 {
-    public class GridBuilder
+    public static class GridBuilder
     {
         public static Grid FromString(string plainText)
         {

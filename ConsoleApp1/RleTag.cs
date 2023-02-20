@@ -3,7 +3,7 @@
 namespace GameOfLife
 {
     public static class RleTag
-    {        
+    {
         private static bool GetCell(Match match) => match.Value.Last() == 'o';
 
         private static string TrimCell(Match match) => match.Value.TrimEnd(new char[] { 'b', 'o' });

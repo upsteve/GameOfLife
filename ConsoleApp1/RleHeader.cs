@@ -2,7 +2,7 @@
 
 namespace GameOfLife
 {
-    public class RleHeader
+    public static class RleHeader
     {
         private static readonly Regex header = new(@"^\s*x\s*=\s*(\d+),\s*y\s*=\s*(\d+)");
         public static Match FindHeader(IEnumerable<string> lines)
