@@ -1,8 +1,9 @@
-﻿using System.Data;
+﻿using GameOfLife.CellEnumeration;
+using System.Data;
 using System.Drawing;
 using System.Text.RegularExpressions;
 
-namespace GameOfLife
+namespace GameOfLife.Parsers.Rle
 {
     public class RleString
     {

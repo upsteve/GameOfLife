@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Text.RegularExpressions;
 
-namespace GameOfLife
+namespace GameOfLife.Parsers.Rle
 {
     public class RleParser : IGridParser
     {

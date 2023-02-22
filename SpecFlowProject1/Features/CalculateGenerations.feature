@@ -35,7 +35,7 @@ Scenario: A block of 4 cells is stable
 	| ... |
 
 Scenario: A Gosper glider gun has a period of 30 generations
-	Given the gosper.rle file
+	Given the examples\gosper.rle file
 	When the next 30 generations are calculated
 	Then the grid is
 	| plainText                            |

@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace GameOfLife
+namespace GameOfLife.Parsers.Rle
 {
     public static class RleHeader
     {

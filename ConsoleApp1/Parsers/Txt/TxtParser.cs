@@ -1,4 +1,4 @@
-﻿namespace GameOfLife
+﻿namespace GameOfLife.Parsers.Txt
 {
     public class TxtParser : IGridParser
     {

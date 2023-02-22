@@ -235,7 +235,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 38
- testRunner.Given("the gosper.rle file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the examples\\gosper.rle file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 39
  testRunner.When("the next 30 generations are calculated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

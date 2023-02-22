@@ -1,4 +1,7 @@
-﻿namespace GameOfLife
+﻿using GameOfLife.Parsers.Rle;
+using GameOfLife.Parsers.Txt;
+
+namespace GameOfLife
 {
     public static class GridBuilder
     {
