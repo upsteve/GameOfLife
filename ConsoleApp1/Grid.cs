@@ -8,11 +8,11 @@ namespace GameOfLife
         private readonly bool[] cells;
         private readonly IGenerator generator;
 
-        public Grid(int width, int height, bool[]? cells = null, IGenerator? generator = null)
+        public Grid(Size size, IGenerator generator, bool[]? cells = null)
         {
-            Size = new Size(width, height);
-            this.cells = cells ?? new bool[width * height];
-            this.generator = generator ?? Generator.Default(Size);
+            Size = size;
+            this.generator = generator;
+            this.cells = cells ?? new bool[size.Width * size.Height];
         }
 
         public bool this[int index]

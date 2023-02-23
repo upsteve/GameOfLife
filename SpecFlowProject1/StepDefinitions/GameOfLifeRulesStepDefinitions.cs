@@ -11,7 +11,7 @@ namespace SpecFlowProject1.StepDefinitions
         [Given(@"a (.*) cell with (.*) neighbours")]
         public void GivenAStatusCellWithNeighoursNeighbours(string status, int neighbours)
         {
-            Grid = new Grid(3, 3);
+            Grid = GridBuilder.FromDimensions(3, 3);
             for (int i = 0; i < neighbours; i++)
             {
                 Grid[neighbourOffsets[i]] = true;
