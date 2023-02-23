@@ -29,7 +29,6 @@ namespace GameOfLife
             return next;
         }
 
-        public static IGenerator Default(int width, int height) => new Generator(new GridEnumerator(new Size(width, height)));
         public static IGenerator Default(Size size) => new Generator(new GridEnumerator(size));
     }
 }

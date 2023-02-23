@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace GameOfLife.Parsers.Txt
+﻿namespace GameOfLife.Parsers.Txt
 {
     public class TxtParser : IGridParser
     {
