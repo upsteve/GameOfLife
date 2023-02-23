@@ -25,7 +25,7 @@ namespace GameOfLife.Parsers.Rle
             var lines = SplitLines(value);
             var size = GetSizeFromHeader(lines);
             var cells = RleString.LinesToCells(lines, size);
-            return GridBuilder.FromSizeWithCells(size, cells.ToArray());
+            return new Grid(size, Generator.Default(size), cells.ToArray());
         }
     }
 }

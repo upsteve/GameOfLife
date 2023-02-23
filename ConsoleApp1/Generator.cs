@@ -21,7 +21,7 @@ namespace GameOfLife
 
         public Grid Next(Grid seed)
         {
-            var next = GridBuilder.FromSizeWithGenerator(seed.Size, this);
+            var next = new Grid(seed.Size, this);
             foreach (var point in gridEnumerator.Points().Where(point => IsAlive(seed, point)))
             {
                 next[point] = true;
