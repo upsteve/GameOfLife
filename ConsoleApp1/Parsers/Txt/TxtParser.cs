@@ -1,4 +1,6 @@
-﻿namespace GameOfLife.Parsers.Txt
+﻿using System.Drawing;
+
+namespace GameOfLife.Parsers.Txt
 {
     public class TxtParser : IGridParser
     {
@@ -19,7 +21,8 @@
         public Grid FromString(string value)
         {
             var lines = SplitLines(value);
-            var grid = GridBuilder.FromDimensions(lines.First().Length, lines.Count);
+            var size = new Size(lines.First().Length, lines.Count);
+            var grid = new Grid(size, Generator.Default(size));
             PopulateGridFromLines(ref grid, lines);
             return grid;
         }
