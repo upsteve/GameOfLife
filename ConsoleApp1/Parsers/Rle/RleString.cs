@@ -16,6 +16,7 @@ namespace GameOfLife.Parsers.Rle
 
         public RleString(IEnumerable<string> lines)
         {
+            if (lines == null) throw new ArgumentNullException(nameof(lines));
             value = string.Join("", lines.Where(IsDataLine));
         }
 
@@ -33,6 +34,8 @@ namespace GameOfLife.Parsers.Rle
 
         public static IEnumerable<bool> LinesToCells(IEnumerable<string> lines, Size size)
         {
+            if (lines == null) throw new ArgumentNullException(nameof(lines));
+
             return new RleString(lines)
                 .TruncateAtTerminator()
                 .RemoveWhitespace()

@@ -5,7 +5,7 @@ namespace SpecFlowProject1.StepDefinitions
     public static class TestGrid
     {
         private static Size size = new(3, 3);
-        public static readonly int Centre = 4;
+        public static int Centre { get => 4; }
         private static readonly int[] neighbourOffsets = { 0, 1, 2, 3, 5, 6, 7, 8 };
 
         public static Grid BuildWithNeighbours(bool status, int neighbours)

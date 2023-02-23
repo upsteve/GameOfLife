@@ -9,7 +9,7 @@ namespace SpecFlowProject1.StepDefinitions
         public void GivenAnInitialGridOf(Table table)
         {
             var plainText = ConvertTableToString(table);
-            Grid = GridBuilder.FromString(plainText);
+            this.Grid = GridBuilder.FromString(plainText);
         }
 
         [Then(@"the grid is")]
@@ -17,7 +17,7 @@ namespace SpecFlowProject1.StepDefinitions
         {
             var plainText = ConvertTableToString(table);
             var expectedGrid = GridBuilder.FromString(plainText);
-            Grid.Should().Be(expectedGrid);
+            this.Grid.Should().Be(expectedGrid);
         }
     }
 }

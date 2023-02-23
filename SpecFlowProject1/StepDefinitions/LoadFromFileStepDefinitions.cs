@@ -8,13 +8,13 @@ namespace SpecFlowProject1.StepDefinitions
         [Given(@"the (.+\.rle) file")]
         public void GivenTheGlider_RleFile(string filename)
         {
-            Grid = GridBuilder.FromRleFile(filename);
+            this.Grid = GridBuilder.FromRleFile(filename);
         }
 
         [Given(@"the (.+\.txt) file")]
         public void GivenTheGlider_TxtFile(string filename)
         {
-            Grid = GridBuilder.FromTxtFile(filename);
+            this.Grid = GridBuilder.FromTxtFile(filename);
         }
     }
 }
