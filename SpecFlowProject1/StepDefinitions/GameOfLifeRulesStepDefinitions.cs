@@ -1,4 +1,3 @@
-using System.Drawing;
 namespace SpecFlowProject1.StepDefinitions
 {
     [Binding]
