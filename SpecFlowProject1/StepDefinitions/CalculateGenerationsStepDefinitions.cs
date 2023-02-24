@@ -8,7 +8,7 @@ namespace SpecFlowProject1.StepDefinitions
         [When(@"the next (.*) generations are calculated")]
         public void WhenTheNextGenerationsAreCalculated(int generations)
         {
-            this.Grid = this.Grid.NextGeneration(generations);
+            Grid = Grid.NextGeneration(generations);
         }
     }
 }

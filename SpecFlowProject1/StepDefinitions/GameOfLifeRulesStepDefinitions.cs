@@ -10,19 +10,19 @@ namespace SpecFlowProject1.StepDefinitions
         [Given(@"a (.*) cell with (.*) neighbours")]
         public void GivenAStatusCellWithNeighoursNeighbours(string status, int neighbours)
         {
-            this.Grid = TestGrid.BuildWithNeighbours(new Size(3, 3), centre, status == "live", neighbours);
+            Grid = TestGrid.BuildWithNeighbours(new Size(3, 3), centre, status == "live", neighbours);
         }
 
         [When(@"the next generation is calculated")]
         public void WhenTheNextGenerationIsCalculated()
         {
-            this.Grid = this.Grid.NextGeneration();
+            Grid = Grid.NextGeneration();
         }
 
         [Then(@"the cell is (.*)")]
         public void ThenTheCellIsNow(string now)
         {
-            this.Grid[centre].Should().Be(now == "live");
+            Grid[centre].Should().Be(now == "live");
         }
     }
 }
