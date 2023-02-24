@@ -5,16 +5,14 @@ namespace GameOfLife
 {
     public static class GridSerializer
     {
-        private static char ToChar(bool cell) => cell ? 'O' : '.';
+        private static char CellToChar(bool cell) => cell ? 'O' : '.';
 
-        private static string ToString(char[] chars) => new(chars);
+        private static string CharArrayToString(char[] chars) => new(chars);
 
         public static string ToString(bool[] cells, int width)
         {
-            StringBuilder sb = new();
-            var lines = cells.Select(ToChar).Chunk(width).Select(ToString);
-            sb.AppendJoin(Environment.NewLine, lines);
-            return sb.ToString();
+            var lines = cells.Select(CellToChar).Chunk(width).Select(CharArrayToString);
+            return new StringBuilder().AppendJoin(Environment.NewLine, lines).ToString();
         }
     }
 }
