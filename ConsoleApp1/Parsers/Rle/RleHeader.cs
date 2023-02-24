@@ -12,7 +12,7 @@ namespace GameOfLife.Parsers.Rle
                 var match = header.Match(line);
                 if (match.Success) return match;
             }
-            throw new ArgumentOutOfRangeException("filename", "File does not contain a valid header of the format x = 3, y = 3");
+            throw new ArgumentOutOfRangeException(nameof(lines), "Provide text does not contain a valid header of the format x = 3, y = 3");
         }
     }
 }

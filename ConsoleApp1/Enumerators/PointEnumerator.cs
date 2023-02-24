@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace GameOfLife.CellEnumeration
+namespace GameOfLife.Enumerators
 {
     public class PointEnumerator
     {

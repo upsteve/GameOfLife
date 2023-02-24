@@ -1,4 +1,4 @@
-﻿using GameOfLife.CellEnumeration;
+﻿using GameOfLife.Enumerators;
 using System.Text.RegularExpressions;
 
 namespace GameOfLife.Parsers.Rle

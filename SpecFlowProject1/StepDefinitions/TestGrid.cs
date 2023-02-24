@@ -1,18 +1,17 @@
+using GameOfLife.Enumerators;
+using System.Collections.Generic;
+using System.Linq;
 using System.Drawing;
 
 namespace SpecFlowProject1.StepDefinitions
 {
     public static class TestGrid
     {
-        private static Size size = new(3, 3);
-        public static int Centre { get => 4; }
-        private static readonly int[] neighbourOffsets = { 0, 1, 2, 3, 5, 6, 7, 8 };
-
-        public static Grid BuildWithNeighbours(bool status, int neighbours)
+        public static Grid BuildWithNeighbours(Size size, Point point, bool status, int count)
         {
             var grid = new Grid(size, Generator.Default(size));
-            for (int i = 0; i < neighbours; i++) grid[neighbourOffsets[i]] = true;
-            grid[Centre] = status;
+            foreach (var neighbour in new NeighbourEnumerator(grid.Size).Of(point).Take(count)) grid[neighbour] = true;
+            grid[point] = status;
             return grid;
         }
     }

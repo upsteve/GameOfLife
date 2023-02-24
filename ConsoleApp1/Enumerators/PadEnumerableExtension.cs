@@ -1,4 +1,4 @@
-﻿namespace GameOfLife.CellEnumeration
+﻿namespace GameOfLife.Enumerators
 {
     public static class PadEnumerableExtension
     {
