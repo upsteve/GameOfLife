@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleApp1\GameOfLife.csproj" />
+    <ProjectReference Include="..\GameOfLife\GameOfLife.csproj" />
   </ItemGroup>
 
   <ItemGroup>
